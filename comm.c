@@ -88,6 +88,17 @@ void gr (SOCKET s);
 void check_reboot (void);
 
 
+// prool begin
+// prool here: http://mud.kharkov.org proolix@gmail.com
+int isprool(char c) // prool's modif for isprint
+{
+if ((c<32)&&(c>=0)) return 0;
+if (c==-1) return 0;
+if (c==-3) return 0;
+return 1;
+}
+// prool end
+
 /* *********************************************************************
 *  main game loop and related stuff              *
 ********************************************************************* */
@@ -796,7 +807,7 @@ int process_input (struct descriptor_data *t)
           i++;
         } else
           i++;                  /* no or just one char.. Skip backsp */
-      else if (isascii (*(t->buf + i)) && isprint ((int)*(t->buf + i))) {
+      else if (isprool (*(t->buf + i))) { // by prool for full 8bit characters (f.e. for UTF-8, koi-8r, cp1251, etc)
         /* trans char, double for '$' (printf)  */
         if ((*(tmp + k) = *(t->buf + i)) == '$')
           *(tmp + ++k) = '$';
