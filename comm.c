@@ -17,6 +17,10 @@
 #include "db.h"
 #include "prototypes.h"
 
+#ifndef FNDELAY // prool
+#define FNDELAY 0x0004
+#endif
+
 #define DFLT_PORT 4000          /* default port */
 #define MAX_NAME_LENGTH 15
 #define MAX_HOSTNAME   256

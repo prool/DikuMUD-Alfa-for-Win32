@@ -253,7 +253,8 @@ extern char *fgets_win (char *buf, int n, FILE * fp);
 #if defined OPEN_MAX
 #define NOFILE OPEN_MAX
 #else
-#error Cannot determine maximum open files
+//#error Cannot determine maximum open files
+#define OPEN_MAX 256 // prool
 #endif
 #endif
 

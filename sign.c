@@ -1,6 +1,9 @@
 /* Present a message on a port */
 
 #include "os.h"
+#ifndef FNDELAY // prool
+#define FNDELAY 0x0004
+#endif
 
 void watch (int port, char *text);
 void wave (SOCKET sock, char *text);
